@@ -1,11 +1,11 @@
-import { Box, ListItemIcon, ListItemText, MenuItem, MenuList, Badge, styled, useTheme, useMediaQuery, IconButton } from '@mui/material';
+import { Box, ListItemIcon, ListItemText, MenuItem, Stack, Badge, styled, useTheme, useMediaQuery, IconButton, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { menuItems } from '../MenuItem/menuLists'
+import { menuItems } from './menuLists'
 import TwitterIcon from '@mui/icons-material/Twitter';
-import TweetButton from '../Buttons/TweetButton';
+import TweetButton from '../../Buttons/TweetButton';
 import CreateIcon from '@mui/icons-material/Create';
 
-const StyledMenuItem = styled(MenuItem)(({ theme }) =>({
+const StyledBoxItem = styled(Box)(({ theme }) =>({
     display: 'flex',
     gap: '10px',
     alignItems: 'center',
@@ -21,18 +21,17 @@ const StyledBox = styled(Box)(({ theme }) =>({
     display: 'flex',
     gap: '10px',
     alignItems: 'center',
-    padding: '5px 10px',
+    padding: '12px',
     borderRadius: '20px',
+    color:  "#fff",
+    textDecoration: 'none',
     ":hover":{
         backgroundColor: 'rgba(231,233,234,0.1)'
     }
 }));
 
-const StyledListItemText = styled(ListItemText)(({ theme }) =>({
-
-    "& .MuiTypography-root": {
-        fontSize: '20px',
-    },
+const StyledListItemTypography = styled(Typography)(({ theme }) =>({
+    fontSize: '20px',
     [theme.breakpoints.down('lg')]: {
         display: 'none'
     }
@@ -43,38 +42,42 @@ const Item = () => {
     const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
-        <MenuList>
-            <MenuItem disableRipple sx={{
+        <Stack direction="column">
+            <StyledBoxItem sx={{
                 '&:hover':{
                     backgroundColor: 'transparent',
                     cursor: 'default'
                 }
-            }}>
-                <TwitterIcon sx={{
-                    '&:hover':{
-                        backgroundColor: 'rgba(255,255,255, 0.3)',
-                        cursor: 'pointer',
-                        borderRadius: '50%',
-                    }
-                }}/>
-            </MenuItem>
+            }}
+                
+            >
+                <StyledBox>
+                    <TwitterIcon sx={{
+                        '&:hover':{
+                            backgroundColor: 'rgba(255,255,255, 0.3)',
+                            cursor: 'pointer',
+                            borderRadius: '50%',
+                        }
+                    }}/>
+                </StyledBox>
+            </StyledBoxItem>
             { menuItems?.map(menu =>(
-                <StyledMenuItem key={menu.name} disableRipple component={Link} to='/'> 
-                    <StyledBox display='flex'>
-                        <ListItemIcon>
+                <StyledBoxItem key={menu.name}> 
+                    <StyledBox display='flex' component={Link} to={menu.to}>
+                        <Box>
                             <Badge variant='dot' color="primary">
                                 { menu.icon }
                             </Badge>
-                        </ListItemIcon>
-                        <StyledListItemText>
+                        </Box>
+                        <StyledListItemTypography>
                             { menu.label }
-                        </StyledListItemText>
+                        </StyledListItemTypography>
                     </StyledBox>
-                </StyledMenuItem>
+                </StyledBoxItem>
             ))}
-            <MenuItem disableRipple>
+            <StyledBoxItem mt={2}>
                 { matches ? (
-                    <IconButton>
+                    <IconButton sx={{ backgroundColor: "#1D9BF0" }}>
                         <CreateIcon />
                     </IconButton>
                 ) :
@@ -82,8 +85,8 @@ const Item = () => {
                     <TweetButton fullWidth={true}/>
                 )}
                 
-            </MenuItem>
-        </MenuList>
+            </StyledBoxItem>
+        </Stack>
         
     )
 }

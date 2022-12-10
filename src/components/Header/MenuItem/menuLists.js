@@ -11,41 +11,49 @@ export const menuItems = [
     {
         name: 'home',
         label: 'Home',
-        icon: <HomeOutlinedIcon />
+        icon: <HomeOutlinedIcon />,
+        to: '/home'
     },
     {
         name: 'explore',
         label: 'Explore',
-        icon: <TagOutlinedIcon />
+        icon: <TagOutlinedIcon />,
+        to: '/explore'
     },
     {
         name: 'notifications',
         label: 'Notifications',
-        icon: <NotificationsNoneOutlinedIcon />
+        icon: <NotificationsNoneOutlinedIcon />,
+        to: '/notifications'
     },
     {
         name: 'messages',
         label: 'Messages',
-        icon: <MailOutlineOutlinedIcon />
+        icon: <MailOutlineOutlinedIcon />,
+        to: '/messages'
     },
     {
         name: 'bookmarks',
         label: 'Bookmarks',
-        icon: <BookmarkBorderOutlinedIcon />
+        icon: <BookmarkBorderOutlinedIcon />,
+        to: '/bookmarks'
     },
     {
         name: 'lists',
         label: 'Lists',
-        icon: <ListAltOutlinedIcon />
+        icon: <ListAltOutlinedIcon />,
+        to: '/lists'
     },
     {
         name: 'profile',
         label: 'Profile',
-        icon: <PersonOutlinedIcon />
+        icon: <PersonOutlinedIcon />,
+        to: '/makiesss'
     },
     {
         name: 'more',
         label: 'More',
-        icon: <MoreHorizOutlinedIcon />
+        icon: <MoreHorizOutlinedIcon />,
+        to: '#'
     }
 ]

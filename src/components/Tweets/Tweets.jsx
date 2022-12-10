@@ -7,6 +7,11 @@ const Tweets = () => {
     <Box>
         <ShowMoreTweets />
         <Tweet />
+        <Tweet />
+        <Tweet />
+        <Tweet />
+        <Tweet />
+        <Tweet />
     </Box>
   )
 }

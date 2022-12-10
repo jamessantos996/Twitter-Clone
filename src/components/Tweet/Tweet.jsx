@@ -1,10 +1,24 @@
-import { Avatar, Box, IconButton, Stack, Typography } from '@mui/material'
+import { Avatar, Box, IconButton, Stack, Typography, styled, Tooltip } from '@mui/material'
 import VerifiedIcon from '@mui/icons-material/Verified';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
+
+const ButtonContainer = styled(Box)(({ theme, buttonColor }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  cursor: 'pointer',
+  ":hover .MuiButtonBase-root": {
+    color: buttonColor,
+    // backgroundColor: buttonColor
+  },
+  ":hover .MuiTypography-root": {
+    color: buttonColor
+  }
+}))
 
 const Tweet = () => {
   return (
@@ -31,29 +45,37 @@ const Tweet = () => {
            />
         </Box>
         <Stack direction='row' justifyContent='space-between' maxWidth={425}>
-          <Box display='flex' alignItems='center'>
-            <IconButton size='small'>
-              <ModeCommentOutlinedIcon fontSize='small'/>
-            </IconButton>
-            <Typography>24</Typography>
-          </Box>
-          <Box display='flex' alignItems='center'>
-            <IconButton>
-              <ShareOutlinedIcon fontSize='small'/>
-            </IconButton>
-            <Typography>39</Typography>
-          </Box>
-          <Box display='flex' alignItems='center'>
-            <IconButton>
-              <FavoriteBorderOutlinedIcon fontSize='small'/>
-            </IconButton>
-            <Typography>575</Typography>
-          </Box>
-          <Box display='flex' alignItems='center'>
-            <IconButton>
-              <IosShareOutlinedIcon fontSize='small'/>
-            </IconButton>
-          </Box>
+          <Tooltip title="Reply" placement='bottom-start'>
+            <ButtonContainer buttonColor='#1d9bf0'>
+              <IconButton size='small'>
+                <ModeCommentOutlinedIcon fontSize='small'/>
+              </IconButton>
+              <Typography>24</Typography>
+            </ButtonContainer>
+          </Tooltip>
+          <Tooltip title="Retweet" placement='bottom-start'>
+            <ButtonContainer buttonColor='#00ba7c'>
+              <IconButton>
+                <ShareOutlinedIcon fontSize='small'/>
+              </IconButton>
+              <Typography>39</Typography>
+            </ButtonContainer>
+          </Tooltip>
+          <Tooltip title="Like" placement='bottom-start'>
+            <ButtonContainer buttonColor='#f91880'>
+              <IconButton>
+                <FavoriteBorderOutlinedIcon fontSize='small'/>
+              </IconButton>
+              <Typography>575</Typography>
+            </ButtonContainer>
+          </Tooltip>
+          <Tooltip title="Share" placement='bottom-start'>
+            <ButtonContainer buttonColor='#1d9bf0'>
+              <IconButton>
+                <IosShareOutlinedIcon fontSize='small'/>
+              </IconButton>
+            </ButtonContainer>
+          </Tooltip>
         </Stack>
       </Stack>
     </Stack>

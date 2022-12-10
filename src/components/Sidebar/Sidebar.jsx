@@ -1,14 +1,20 @@
-import { Box } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import Trends from '../Trends/Trends'
+import Trends from '../Trends/Trends';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+      display: 'none'
+  }
+}))
 
 const Sidebar = () => {
   return (
-    <Box sx={{ width: '350px' }}>
+    <StyledBox sx={{ width: '350px' }}>
       <SearchBar />
       <Trends />
-    </Box>
+    </StyledBox>
 
   )
 }
